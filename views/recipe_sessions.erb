@@ -1,0 +1,25 @@
+<section class="section">
+    <div class="container">
+        <h3 class="title is-4">Sessions</h3>
+        <div class="box">
+            <% sessions.each do |session| %>
+                <div class="columns">
+                    <div class="column">
+                        <%= session['date'] %>
+                    </div>
+                    <div class="column">
+                        <a href="/session/<%= session['id'] %>"><%= session['name'] %></a>
+                    </div>
+                    <div class="column">
+                        <%= session['notes'].gsub(/\n/, '<br>') %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div>
+        <a href="/api/recipe/<%= recipe_id %>/sessions?format=pretty" target="_blank">[Raw]</a>
+        <pre class="hidden"><%= JSON.pretty_generate(sessions) %></pre>
+    </div>
+</section>

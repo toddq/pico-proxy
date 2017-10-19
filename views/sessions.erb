@@ -1,0 +1,28 @@
+<h3 class="title is-4">Sessions</h3>
+<div class="box">
+    <div class="columns">
+        <div class="column"><span class="title is-5">Date</span></div>
+        <div class="column"><span class="title is-5">Beer</span></div>
+        <div class="column"><span class="title is-5"></span></div>
+    </div>
+
+    <% sessions.each do |session| %>
+        <div class="columns">
+            <div class="column"><%= session['StartTime'] %></div>
+            <div class="column">
+                <a href="/recipe/<%= session['RecipeGUID'] %>">
+                    <%= session['BeerName'] %>
+                </a>
+            </div>
+            <div class="column">
+                <a href="/session/<%= session['GUID'] %>">
+                    Session Details
+                </a>
+            </div>
+        </div>
+    <% end %>
+</div>
+<div>
+    <a href="/api/sessions?format=pretty" target="_blank">[Raw]</a>
+    <pre class="hidden"><%= JSON.pretty_generate(sessions) %></pre>
+</div>

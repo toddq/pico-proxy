@@ -1,0 +1,19 @@
+<section class="section">
+    <div class="container">
+        <h3 class="title is-4">Notes</h3>
+        <div class="box">
+            <% notes.each do |note| %>
+                <div class="columns">
+                    <div class="column"><%= note['Date'] %></div>
+                    <div class="column"><%= note['OG'] == 0 ? '' : note['OG'] %></div>
+                    <div class="column"><%= note['Note'] %></div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <div>
+        <a href="/api/session/<%= session_id %>/notes?format=pretty" target="_blank">[Raw]</a>
+        <pre class="hidden"><%= JSON.pretty_generate(notes) %></pre>
+    </div>
+</section>

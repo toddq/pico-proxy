@@ -1,0 +1,40 @@
+<section class="section">
+    <div class="container">
+        <h2 class="title"><%= recipe['name'] %></h2>
+        <h3 class="subtitle"><%= recipe['beerText'] %></h3>
+    </div>
+</section>
+<div class="box">
+    <% recipe['specs'].each do |name, value| %>
+        <div class="columns">
+            <div class="column is-3"><%= name %></div>
+            <div class="column is-4"><%= value %></div>
+        </div>
+    <% end %>
+</div>
+<div class="box">
+    <% recipe['grainIngredients'].each do |ingredient| %>
+        <div class="columns">
+            <div class="column is-3"><%= ingredient['Name'] %></div>
+            <div class="column is-2"><%= ingredient['Amount'] %> lb</div>
+        </div>
+    <% end %>
+</div>
+<div class="box">
+    <% recipe['hopIngredients'].each do |ingredient| %>
+        <div class="columns">
+            <div class="column"><%= ingredient['Name'] %></div>
+            <div class="column"><%= ingredient['Amount'] %> oz</div>
+            <div class="column"><%= ingredient['Alpha'] %> % AA</div>
+            <div class="column"><%= ingredient['Time'] %> min</div>
+        </div>
+    <% end %>
+</div>
+<div class="box">
+    <%= recipe['notes'].gsub(/\n/, '<br>') %>
+</div>
+
+<div>
+    <a href="/api/recipe/<%= recipe_id %>/recipe?format=pretty" target="_blank">[Raw]</a>
+    <pre class="hidden"><%= JSON.pretty_generate(recipe) %></pre>
+</div>

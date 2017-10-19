@@ -1,0 +1,29 @@
+<section class="section">
+    <div class="container">
+        <h3 class="title is-4">Control Program</h3>
+        <div class="box">
+            <div class="columns">
+                <div class="column"><span class="title is-5">Step</span></div>
+                <div class="column"><span class="title is-5">Compartment</span></div>
+                <div class="column"><span class="title is-5">Temp</span></div>
+                <div class="column"><span class="title is-5">Time</span></div>
+                <div class="column"><span class="title is-5">Drain</span></div>
+            </div>
+            <% control_program['steps'].each do |step| %>
+                <div class="columns">
+                    <% step.each do |key, value| %>
+                        <div class="column"><%= value %></div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div>
+        <a href="/api/recipe/<%= recipe_id %>/control?format=pretty" target="_blank">[Raw]</a>
+        <pre class="hidden"><%= JSON.pretty_generate(control_program) %></pre>
+    </div>
+    <div class="hidden">
+        Raw
+        <pre><%= JSON.pretty_generate(control_program) %></pre>
+    </div>
+</section>
