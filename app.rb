@@ -3,7 +3,6 @@ require 'sinatra/cross_origin'
 require 'json'
 require 'awesome_print'
 require 'picobrew/api'
-require './config'
 
 configure do
     enable :cross_origin
@@ -47,12 +46,6 @@ post '/login' do
         end
     end
     erb :login, :locals => { :error => 'Login error', :user => params['user'], :password => params['password'] }
-end
-
-get '/cookies/write' do
-    cookies = picobrew.cookies
-    Config.write_cookies(cookies)
-    "Wrote #{cookies}"
 end
 
 get '/logout' do
