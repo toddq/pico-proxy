@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/toddq/picobrew-api.git
-  revision: 767aea7ce55c0d8671fde768e2d91b6e53725a81
+  revision: cc0c50071c7301f694aba4968543870669d42733
   specs:
-    picobrew-api (0.1.0)
+    picobrew-api (0.1.1)
       httparty (~> 0.15)
       nokogiri (~> 1.8)
 

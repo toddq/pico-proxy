@@ -130,6 +130,10 @@ get '/api/session/:id/notes' do |session_id|
     format session[:picobrew].get_session_notes(session_id), params[:format]
 end
 
+get '/api/session/:id/recipe' do |session_id|
+    format( {'recipe_id' => session[:picobrew].get_recipe_id_for_session_id(session_id)}, params[:format] )
+end
+
 get '/session/:id' do |session_id|
     log = session[:picobrew].get_session_log(session_id)
     notes = session[:picobrew].get_session_notes(session_id)
