@@ -2,7 +2,7 @@
 
 Provides a web based REST api to your Picobrew data - recipes, sessions, etc.  Just acts as a pass-through proxy to the Picobrew server, does not store any data.
 
-To show examples of what data can be fetched, there's a *very* simple webapp running with the api proxy that will render the data in html.  Login at http://foo.com and browse around to see what it looks like.
+To show examples of what data can be fetched, there's a *very* simple webapp running with the api proxy that will render the data in html.  Login at [https://pico-proxy.herokuapp.com]() and browse around to see what it looks like.
 
 ### Proxy API
 
@@ -16,7 +16,7 @@ $ curl -c cookiefile -X POST -F "user=username" -F "password=password" http://pi
 $ curl -b cookiefile http://pico-proxy/api/recipes
 ```
 
-See the [Wiki]() for documentation on the current API endpoints.
+See the [Wiki](https://github.com/toddq/pico-proxy/wiki/API) for documentation on the current API endpoints.
 
 ### Build
 ```
