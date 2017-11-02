@@ -27,7 +27,7 @@ before  do
 end
 
 get '/' do
-    erb :index
+    erb :index, :locals => { :whats_picobrewing => has_whats_picobrewing }
 end
 
 get '/login' do
@@ -112,7 +112,7 @@ end
 
 get '/sessions' do
     sessions = session[:picobrew].get_all_sessions()
-    erb :sessions, :locals => { :sessions => sessions }
+    erb :sessions, :locals => { :sessions => sessions, :whats_picobrewing => has_whats_picobrewing }
 end
 
 get '/session/:id/log' do |session_id|
@@ -145,6 +145,15 @@ end
 
 get '/api/sessions' do
     format session[:picobrew].get_all_sessions(), params[:format]
+end
+
+get '/whats-picobrewing' do
+    redirect '/whats-picobrewing/index.html' if has_whats_picobrewing
+    pass
+end
+
+def has_whats_picobrewing()
+    File.exists? "public/whats-picobrewing/index.html"
 end
 
 def format(response, type=:json)

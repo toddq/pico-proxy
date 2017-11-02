@@ -4,6 +4,9 @@
         <div class="column"><span class="title is-5">Date</span></div>
         <div class="column"><span class="title is-5">Beer</span></div>
         <div class="column"><span class="title is-5"></span></div>
+        <% if whats_picobrewing %>
+            <div class="column is-1"><span class="title is-5"></span></div>
+        <% end %>
     </div>
 
     <% sessions.each do |session| %>
@@ -19,6 +22,11 @@
                     Session Details
                 </a>
             </div>
+            <% if whats_picobrewing %>
+                <div class="column is-1">
+                    <a href="/whats-picobrewing/index.html#?sessionId=<%= session['GUID'] %>">Alt View</a>
+                </div>
+            <% end %>
         </div>
     <% end %>
 </div>
