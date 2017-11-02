@@ -6,12 +6,14 @@ require 'picobrew/api'
 
 configure do
     enable :cross_origin
-    enable :sessions
-    set :session_secret, "asdfjas dfl; as;dfhaskj fhlkashdfljahsd"
     if settings.environment == :development
         puts "DEVELOPMENT"
+        enable :sessions
+        set :session_secret, "asdfjas dfl; as;dfhaskj fhlkashdfljahsd"
     elsif settings.environment == :production
         puts "PRODUCTION"
+        puts "Enabling Rack session pools"
+        use Rack::Session::Pool
     end
 end
 
