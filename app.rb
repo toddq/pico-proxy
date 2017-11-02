@@ -20,6 +20,7 @@ end
 before  do
     unless request.path_info == '/login' || request.path_info == '/logout'
         if session[:picobrew].nil?
+            session[:route] = request.path_info
             redirect '/login'
         end
     end
@@ -40,7 +41,7 @@ post '/login' do
         begin
             session[:picobrew] = Picobrew::Api.new(params['user'], params['password'])
             puts "Login success - #{session[:user]}"
-            redirect '/'
+            redirect(session[:route] || '/')
         rescue Exception => e
             puts "Login failure - #{session[:user]} - #{e}"
         end
